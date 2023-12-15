@@ -77,7 +77,7 @@ app.post('/vote/:animalType/:id', (req, res) => {
       const count = row.count;
 
       if (count === 0) {
-        res.status(404).json({ error: "Registro não encontrado" });
+        res.status(404).json({ error: "Erro ao tentar encontrar o animal desejado" });
       } else {
         const update = db.prepare(`UPDATE ${animalType} SET votes = votes + 1 WHERE id = ?`);
         update.run(id, function (err) {
